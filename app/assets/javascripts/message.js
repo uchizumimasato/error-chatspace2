@@ -28,7 +28,7 @@ $(document).on('turbolinks:load', function() {
         var flash = buildflashmessage(flash_status);
         $(".flash-messages").prepend(flash);
         $this.reset();
-        $(".submit-save").removeAttr("disabled");
+        $(".submit_save").removeAttr("disabled");
       })
       .fail(function() {
         alert('error');
@@ -94,7 +94,6 @@ function scrollBottom(){
 
 function intervalmessage(group_id, current_url) {
   var last_message_id = $('.chat-message:last').data('message-id') || 0;
-  console.log(last_message_id);
   $.ajax({
     type: 'GET',
     url: current_url,
