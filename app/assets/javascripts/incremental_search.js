@@ -48,14 +48,14 @@ function buildAddUserHTML(id, name) {
 }
 
 function searchUsers() {
-  var inputname = $(this).val();
+  var inputName = $(this).val();
   var preInput = "";
-  if(inputname !== preInput){
+  if(inputName !== preInput){
   $.ajax({
     type: 'GET',
     url: '/users/search',
     data: {
-      name: inputname,
+      inputName: inputName,
     },
     dataType: 'json'
   })
@@ -71,7 +71,7 @@ function searchUsers() {
   .fail(function(){
     alert('error');
   });
-  preIput = inputname;
+  preInput = inputName;
   } else {
     $(".chat-remove").remove(); // 検索を終えた後に、ユーザーをそのまま表示にして置かないようにするため
   }

@@ -28,7 +28,7 @@ $(document).on('turbolinks:load', function() {
         var flash = buildflashmessage(flash_status);
         $(".flash-messages").prepend(flash);
         $this.reset();
-        $(".submit_save").removeAttr("disabled");
+        $(".submit-save").removeAttr("disabled");
       })
       .fail(function() {
         alert('error');
@@ -49,7 +49,7 @@ $(document).on('turbolinks:load', function() {
       intervalmessage(group_id, $current_url);
     } else {
       clearInterval(autoReload);
-    }}, 3000);
+    }}, 10000);
 });
 
 
@@ -60,7 +60,7 @@ function buildHTML(message) {
     <li class = "chat-message" data-message-id="${message.id}">
       <div class = "chat-message__header clearfix">
         <div class = "chat-message__name">
-          ${message.name}
+          ${message.user_name}
         </div>
         <div class = "chat-message__time">
           ${message.date}
@@ -94,6 +94,7 @@ function scrollBottom(){
 
 function intervalmessage(group_id, current_url) {
   var last_message_id = $('.chat-message:last').data('message-id') || 0;
+
   $.ajax({
     type: 'GET',
     url: current_url,
